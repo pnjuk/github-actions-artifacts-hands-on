@@ -11,13 +11,15 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Create a text file
-      run: echo "Hello, world!" > hello.txt
+      run: |
+        mkdir -p artifacts
+        echo "Hello, world!" > artifacts/hello.txt
 
     - name: Archive text file
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: hello-artifact
-        path: ./artifacts
+        path: artifacts/hello.txt
         
   download:
     runs-on: ubuntu-latest
